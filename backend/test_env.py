@@ -1,0 +1,4 @@
+from app.config import SECRET_KEY, OPENAI_API_KEY
+
+print("SECRET_KEY:", SECRET_KEY)
+print("OPENAI_API_KEY:", OPENAI_API_KEY)

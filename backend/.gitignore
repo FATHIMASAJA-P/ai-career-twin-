@@ -1,0 +1,27 @@
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code
+.vscode/
+
+# Generated files
+reports/
+uploads/
+*.log
+
+# SQLite databases and journals
+*.db
+*.db-*
+*.db.*
+*.sqlite
+*.sqlite3
