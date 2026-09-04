@@ -11,17 +11,24 @@ DATABASE_URL = os.getenv(
     "sqlite:///./career_twin.db.migrated"
 )
 
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-# SQLite configuration
 if DATABASE_URL.startswith("sqlite"):
     engine = create_engine(
         DATABASE_URL,
         connect_args={"check_same_thread": False}
     )
-
-# PostgreSQL / Neon configuration
 else:
-    engine = create_engine(DATABASE_URL)
+    connect_args = {}
+    if "sslmode=" not in DATABASE_URL:
+        connect_args["sslmode"] = "require"
+
+    engine = create_engine(
+        DATABASE_URL,
+        pool_pre_ping=True,
+        connect_args=connect_args,
+    )
 
 
 SessionLocal = sessionmaker(

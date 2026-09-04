@@ -21,7 +21,7 @@ import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
       <Routes>
 
         {/* Public Routes */}
